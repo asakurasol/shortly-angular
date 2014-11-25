@@ -3,34 +3,67 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
-  'ngRoute'
+  'ngRoute',
+  'ui.router'
 ])
-.config(function($routeProvider, $httpProvider) {
-  $routeProvider
-    .when('/signin', {
-      templateUrl: 'app/auth/signin.html',
-      controller: 'AuthController'
+.config(function($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/home');
+  $stateProvider
+    // .state('links', {
+    //   url: '/links',
+    //   templateUrl : 'app/links/links.html'
+    // })
+    // .state('shorten', {
+    //   url: '/shorten',
+    //   templateUrl : 'app/shorten/shorten.html'
+    // })
+    .state('signin', {
+      url: '/signin',
+      templateUrl : 'app/auth/signin.html'
     })
-    .when('/signup', {
-      templateUrl: 'app/auth/signup.html',
-      controller: 'AuthController'
+    .state('signup', {
+      url: '/signup',
+      templateUrl : 'app/auth/signup.html'
     })
-    // Your code here
-    .when('/links', {
-      templateUrl: 'app/links/links.html',
-      controller: 'LinksController'
+    .state('home',{
+      url: '/home',
+      views: {
+        '': {templateUrl : 'app/home.html'},
+        'links@home': {
+          templateUrl: 'app/links/links.html',
+          controller: 'LinksController'
+        },
+        'shorten@home' : {
+          templateUrl: 'app/shorten/shorten.html',
+          controller: 'ShortenController'
+        }
+      }
     })
-    .when('/shorten', {
-      templateUrl: 'app/shorten/shorten.html',
-      controller: 'ShortenController'
-    })
-    .otherwise({
-      redirectTo: '/links'
-    })
+  // $routeProvider
+  //   .when('/signin', {
+  //     templateUrl: 'app/auth/signin.html',
+  //     controller: 'AuthController'
+  //   })
+  //   .when('/signup', {
+  //     templateUrl: 'app/auth/signup.html',
+  //     controller: 'AuthController'
+  //   })
+  //   // Your code here
+  //   .when('/links', {
+  //     templateUrl: 'app/links/links.html',
+  //     controller: 'LinksController'
+  //   })
+  //   .when('/shorten', {
+  //     templateUrl: 'app/shorten/shorten.html',
+  //     controller: 'ShortenController'
+  //   })
+  //   .otherwise({
+  //     redirectTo: '/links'
+  //   })
 
-    // We add our $httpInterceptor into the array
-    // of interceptors. Think of it like middleware for your ajax calls
-    $httpProvider.interceptors.push('AttachTokens');
+  //   // We add our $httpInterceptor into the array
+  //   // of interceptors. Think of it like middleware for your ajax calls
+  //   $httpProvider.interceptors.push('AttachTokens');
 })
 .factory('AttachTokens', function ($window) {
   // this is an $httpInterceptor
