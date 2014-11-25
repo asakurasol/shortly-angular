@@ -49,32 +49,6 @@ angular.module('shortly', [
   };
   return attach;
 })
-.factory('Links', function($http) {
-
-  var link = {};
-  var data = {
-    links: []
-  };
-  var addLink = function() {
-    $http.post('/api/links', link)
-      .then(function(res) {
-        console.log(res);
-      });
-  };
-  var getLinks = function() {
-    $http.get('/api/links')
-      .then(function(res) {
-        data.links = res.data;
-      });
-  };
-
-  return {
-    link: link,
-    data: data,
-    addLink: addLink,
-    getLinks: getLinks
-  };
-})
 .run(function ($rootScope, $location, Auth) {
   // here inside the run phase of angular, our services and controllers
   // have just been registered and our app is ready

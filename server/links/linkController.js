@@ -47,7 +47,7 @@ module.exports = {
         if (match) {
           res.send(match);
         } else {
-          return  util.getUrlTitle(url);
+          return util.getUrlTitle(url);
         }
       })
       .then(function (title) {

@@ -1,7 +1,15 @@
 <div id='container' ng-controller='LinksController'>
-  <!-- Your html here
+  <!-- Your html here -->
 
-  this will likely hold our
+  <h3>Your Links:</h3>
+  <input type="text" ng-model="search.title" placeholder="Search"></input>
+  <ul>
+    <li ng-repeat="link in data.links | orderBy:'-visits' | filter:search">
+      <a href="{{link.code}}"> {{ link.code }} </a>
+      | {{ link.title }}
+      | {{ link.url }}
+      | {{ link.visits }}
+    </li>
+  </ul>
 
-  -->
 </div>
