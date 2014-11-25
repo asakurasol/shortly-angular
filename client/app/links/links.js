@@ -1,8 +1,10 @@
 angular.module('shortly.links', [])
 
-.controller('LinksController', function ($scope, $http, Links) {
+.controller('LinksController', function ($scope, $http, $timeout, Links) {
 
   angular.extend($scope, Links);
-  $scope.getLinks();
+  $timeout(function() {
+    $scope.getLinks();
+  },100);
 
 });

@@ -3,20 +3,21 @@ angular.module('shortly', [
   'shortly.links',
   'shortly.shorten',
   'shortly.auth',
-  'ngRoute',
-  'ui.router'
+  // 'ngRoute',
+  'ui.router',
+  'ngAnimate'
 ])
-.config(function($routeProvider, $httpProvider, $stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/home');
+.config(function(/* $routeProvider, */ $httpProvider, $stateProvider, $urlRouterProvider) {
+  $urlRouterProvider.otherwise('/links');
   $stateProvider
-    // .state('links', {
-    //   url: '/links',
-    //   templateUrl : 'app/links/links.html'
-    // })
-    // .state('shorten', {
-    //   url: '/shorten',
-    //   templateUrl : 'app/shorten/shorten.html'
-    // })
+    .state('links', {
+      url: '/links',
+      templateUrl : 'app/links/links.html'
+    })
+    .state('shorten', {
+      url: '/shorten',
+      templateUrl : 'app/shorten/shorten.html'
+    })
     .state('signin', {
       url: '/signin',
       templateUrl : 'app/auth/signin.html'
