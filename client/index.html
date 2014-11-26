@@ -4,10 +4,10 @@
     <meta charset="utf-8" />
     <title>Shortly</title>
 
-    <link rel="stylesheet" type="text/css" href="styles/style.css" />
     <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet">
     <link href="lib/bootstrap-material-design/dist/css/ripples.min.css" rel="stylesheet">
-    <link href="lib/bootstrap-material-design/dist/css/material-wfont.min.css" rel="stylesheet">
+    <link href="lib/bootstrap-material-design/dist/css/material.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="styles/style.css" />
 
   </head>
   <body>
@@ -16,13 +16,13 @@
       <div class="navbar-header">
         <h1 class="navbar-brand withripple">Shortly</h1>
       </div>
-      <div class="navbar-collapse">
-        <ul class="navbar nav">
-          <li class="navbar-toggle">
-            <a ui-sref="links" class="active withripple" style="color: white;">Links</a>
+      <div class="navbar-collapse collapse">
+        <ul class="nav navbar-nav">
+          <li class="">
+            <a ui-sref="links" ui-sref-active="active-state" style="color: white;">Links</a>
           </li>
-          <li class="navbar-toggle">
-            <a ui-sref="shorten" style="color: white;">Shorten</a>
+          <li class="">
+            <a ui-sref="shorten" ui-sref-active="active-state" style="color: white;">Shorten</a>
           </li>
         </ul>
       </div>

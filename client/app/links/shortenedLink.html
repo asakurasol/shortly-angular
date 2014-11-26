@@ -1,6 +1,16 @@
-<div class='linkContainer animate-repeat'>
-  <a href="/api/links/{{source.code}}" target="_blank"> {{ source.code }} </a>
-  | {{ source.title }}
-  | {{ source.url }}
-  | {{ source.visits }}
+<div class='linkContainer row'>
+  <div class='col-sm-1'>
+    <i class='fa fa-share'></i>
+  </div>
+  <div class = 'title col-sm-3'>
+    <h4><strong>{{ source.title }}</strong></h4>
+  </div>
+  <div class = 'info col-sm-5'>
+    <a href="/api/links/{{source.code}}" target="_blank"> {{source.base_url}}/{{ source.code }} </a>
+  </div>
+  <div class = 'visits col-sm-3'>
+    <h4>{{ source.visits }}</h4> visits
+  </div>
+ <!--  | {{ source.url }}
+  | {{ source.visits }} -->
 </div>

@@ -1,9 +1,14 @@
-<div id='container'>
+<div id='container' class = "container-fluid">
   <!-- Your html here -->
 
   <h3>Your Links:</h3>
-  <input type="text" ng-model="search.title" placeholder="Search"></input>
-    <div class="linksContainer">
+  <div class = 'row'>
+    <div class = 'form-group col-sm-4 well col-sm-offset-4 search-box'>
+      <input type="text" ng-model="search.title" class = 'input-sm' placeholder="Search"></input>
+    </div>
+  </div>
+
+    <div class="linksContainer row well">
       <shortened-link ng-repeat="link in data.links | orderBy:'-visits' | filter:search" source='link' class="fx-fade-down"></shortened-link>
     </div>
 </div>
