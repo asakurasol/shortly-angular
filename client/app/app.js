@@ -5,26 +5,31 @@ angular.module('shortly', [
   'shortly.auth',
   // 'ngRoute',
   'ui.router',
-  'ngAnimate'
+  // 'ngAnimate'
+  'ngFx'
 ])
 .config(function(/* $routeProvider, */ $httpProvider, $stateProvider, $urlRouterProvider) {
-  $urlRouterProvider.otherwise('/links');
+  $urlRouterProvider.otherwise('/home');
   $stateProvider
     .state('links', {
       url: '/links',
-      templateUrl : 'app/links/links.html'
+      templateUrl : 'app/links/links.html',
+      controller: 'LinksController'
     })
     .state('shorten', {
       url: '/shorten',
-      templateUrl : 'app/shorten/shorten.html'
+      templateUrl : 'app/shorten/shorten.html',
+      controller: 'ShortenController'
     })
     .state('signin', {
       url: '/signin',
-      templateUrl : 'app/auth/signin.html'
+      templateUrl : 'app/auth/signin.html',
+      controller: 'AuthController'
     })
     .state('signup', {
       url: '/signup',
-      templateUrl : 'app/auth/signup.html'
+      templateUrl : 'app/auth/signup.html',
+      controller: 'AuthController'
     })
     .state('home',{
       url: '/home',
@@ -32,7 +37,7 @@ angular.module('shortly', [
         '': {templateUrl : 'app/home.html'},
         'links@home': {
           templateUrl: 'app/links/links.html',
-          controller: 'LinksController'
+          controller: 'LinksController',
         },
         'shorten@home' : {
           templateUrl: 'app/shorten/shorten.html',

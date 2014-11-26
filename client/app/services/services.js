@@ -1,6 +1,6 @@
 angular.module('shortly.services', [])
 
-.factory('Links', function($http, Auth) {
+.factory('Links', function($http, $timeout, Auth) {
 
   var link = {
     url: ''
@@ -9,21 +9,28 @@ angular.module('shortly.services', [])
     links: []
   };
   var addLink = function() {
-    // console.log(link);
 
     console.log(Auth.isAuth())
     if (Auth.isAuth()) {
       $http.post('/api/links', link)
         .then(function(res) {
-          console.log(res);
         });
       } // else, route to signin page
   };
   var getLinks = function() {
+    data.links = [];
+
     $http.get('/api/links')
       .then(function(res) {
-        data.links = res.data;
-        console.log(data.links)
+        res.data.forEach(function(link, idx) {
+
+          console.log(link)
+
+          $timeout(function() {
+            data.links.push(link);
+          }, idx * 175)
+        });
+        // data.links = res.data;
       });
   };
 
@@ -49,7 +56,6 @@ angular.module('shortly.services', [])
       data: user
     })
     .then(function (resp) {
-      console.log(resp.data)
       return resp.data.token;
     });
   };

@@ -1,14 +1,9 @@
-<div id='container' ng-controller='LinksController'>
+<div id='container'>
   <!-- Your html here -->
 
   <h3>Your Links:</h3>
   <input type="text" ng-model="search.title" placeholder="Search"></input>
     <div class="linksContainer">
-      <div class='linkContainer animate-repeat' ng-repeat="link in data.links | orderBy:'-visits' | filter:search">
-        <a href="/api/links/{{link.code}}" target="_blank"> {{ link.code }} </a>
-        | {{ link.title }}
-        | {{ link.url }}
-        | {{ link.visits }}
-      </div>
+      <shortened-link ng-repeat="link in data.links | orderBy:'-visits' | filter:search" source='link' class="fx-fade-down"></shortened-link>
     </div>
 </div>
