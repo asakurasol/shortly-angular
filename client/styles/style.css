@@ -1,4 +1,4 @@
-body {
+/*body {
   margin: 0;
   margin-top: 10px;
   font-family: arial, sans-serif;
@@ -6,6 +6,7 @@ body {
 
 a {
   color: #333;
+  font-color: white;
   font-size: 14px;
   text-decoration: none;
 }
@@ -193,4 +194,5 @@ input[type=url]:focus {
   transition-delay: 0.7s;
   animation-delay: 0.7s;
 }
+*/
 */

@@ -14,12 +14,24 @@ angular.module('shortly', [
     .state('links', {
       url: '/links',
       templateUrl : 'app/links/links.html',
-      controller: 'LinksController'
+      controller: 'LinksController',
+      animation: {
+        enter: 'slide-in-right-fade',
+        leave: 'slide-out-left-fade',
+        ease: 'sine',
+        speed: 600
+      }
     })
     .state('shorten', {
       url: '/shorten',
       templateUrl : 'app/shorten/shorten.html',
-      controller: 'ShortenController'
+      controller: 'ShortenController',
+      animation: {
+        enter: 'slide-in-left-fade',
+        leave: 'slide-out-right-fade',
+        ease: 'sine',
+        speed: 600
+      }
     })
     .state('signin', {
       url: '/signin',
@@ -44,29 +56,7 @@ angular.module('shortly', [
           controller: 'ShortenController'
         }
       }
-    })
-  // $routeProvider
-  //   .when('/signin', {
-  //     templateUrl: 'app/auth/signin.html',
-  //     controller: 'AuthController'
-  //   })
-  //   .when('/signup', {
-  //     templateUrl: 'app/auth/signup.html',
-  //     controller: 'AuthController'
-  //   })
-  //   // Your code here
-  //   .when('/links', {
-  //     templateUrl: 'app/links/links.html',
-  //     controller: 'LinksController'
-  //   })
-  //   .when('/shorten', {
-  //     templateUrl: 'app/shorten/shorten.html',
-  //     controller: 'ShortenController'
-  //   })
-  //   .otherwise({
-  //     redirectTo: '/links'
-  //   })
-
+    });
   //   // We add our $httpInterceptor into the array
   //   // of interceptors. Think of it like middleware for your ajax calls
   //   $httpProvider.interceptors.push('AttachTokens');
